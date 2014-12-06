@@ -1,4 +1,24 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+
+"""
+Classe DepartmentStore.
+
+Descrive il comportamento di ogni classe di DS. Ogni tipologia e' descritta in
+una sottoclasse a parte, contenente tutti i metodi necessari alla formattazione
+dei file dei cataloghi
+"""
+
+# ============================================================================ #
+__author__ = "Pietro Mascolo"
+__copyright__ = "Copyright 2014, Energee3"
+__credits__ = []
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = "Pietro Mascolo"
+__email__ = "pietro@mascolo.eu"
+__status__ = "Development"
+# ============================================================================ #
 
 import lib_data
 import lib_parametri

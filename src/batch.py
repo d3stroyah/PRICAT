@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
 """
-Batch di gestione della stesura e dell'esportazione dei cataloghi via FTP a EDICOM.
+Batch di gestione della stesura e dell'esportazione dei cataloghi via FTP a
+EDICOM.
 
 Utilizzo:
     $ ./batch.py [-h] [-DS Department Store] [-action Azione]
@@ -10,9 +12,8 @@ Utilizzo:
 
 In caso di mancanza di comandi necessari all'esecuzione, il batch solleva
 un'eccezione e termina l'esecuzione.
-
 """
-#================================================================================#
+# ============================================================================ #
 __author__ = "Pietro Mascolo"
 __copyright__ = "Copyright 2014, Energee3"
 __credits__ = []
@@ -21,10 +22,12 @@ __version__ = "1.0"
 __maintainer__ = "Pietro Mascolo"
 __email__ = "pietro@mascolo.eu"
 __status__ = "Development"
-#================================================================================#
+# ============================================================================ #
 
 import sys
 import os
+import time
+import datetime
 import argparse
 import logging
 import collections
@@ -52,9 +55,9 @@ ACTION = str(args.action).lower()
 DS = str(args.DS).lower()
 ANNO = str(args.anno).lower()
 STAGIONE = str(args.stagione).lower()
-#================================================================================#
+# ============================================================================ #
 
-#================================================================================#
+# ============================================================================ #
 def main():
     """
     Programma di generazione ed esportazione cataloghi,
@@ -65,9 +68,10 @@ def main():
     """
 
     logger = lib_utility.getLogger()
-    logger.info("ciao")
-    logger.debug("asd")
-    logger.critical("asdasd")
+    logger.info("=" * 80)
+    logger.info("Starting execution at: " +
+                str(datetime.datetime.now().isoformat(lib_parametri.DATE_FMT)))
+
 
     # Gestione macro casi di azione:
     if DS:

@@ -89,7 +89,8 @@ class DSObject(object):
     def get_annos(self):
         return self._annos
     def set_annos(self, value):
-        assert((len(str(value).strip()) == 5) and (int(value))), "Parametro 'annos' invalido"
+        assert((len(str(value).strip()) == 5) and (int(value))), \
+            "Parametro 'annos' invalido"
         self._annos = value
 
     def get_anno(self):
@@ -125,7 +126,7 @@ class DSObject(object):
     ############# CLASSI DERIVATE
 
 
-#=============================================================================#
+# =========================================================================== #
 class GeneraleDepartmentStore(DSObject):
     """
     Classe di gestione pubblicazioni per DS generale (in assenza di
@@ -135,47 +136,47 @@ class GeneraleDepartmentStore(DSObject):
     def __init__(self, nome, annos):
         super(GeneraleDepartmentStore, self).__init__(nome, annos)
 
-#=============================================================================#
+# =========================================================================== #
 
 
-#=============================================================================#
+# =========================================================================== #
 class ECIDepartmentStore(DSObject):
     """Classe di gestione pubblicazioni per DS ECI_PORTOGALLO"""
 
     def __init__(self, nome, annos):
         super(ECIDepartmentStore, self).__init__(nome, annos)
 
-#=============================================================================#
+# =========================================================================== #
 
 
-#=============================================================================#
+# =========================================================================== #
 class ECIPortoDepartmentStore(DSObject):
     """Classe di gestione pubblicazioni per DS ECI_PORTOGALLO"""
 
     def __init__(self, nome, annos):
         super(ECIPortoDepartmentStore, self).__init__(nome, annos)
 
-#=============================================================================#
+# =========================================================================== #
 
 
-#=============================================================================#
+# =========================================================================== #
 class USADepartmentStore(DSObject):
     """Classe di gestione pubblicazioni per DS USA"""
 
     def __init__(self, nome, annos, completo=True):
         super(USADepartmentStore, self).__init__(nome, annos)
 
-#=============================================================================#
+# =========================================================================== #
 
 
-#=============================================================================#
+# =========================================================================== #
 class OEDepartmentStore(DSObject):
     """Classe di gestione pubblicazioni per DS PEEK, RINA e COIN"""
 
     def __init__(self, nome, annos):
         super(OEDepartmentStore, self).__init__(nome, annos)
 
-#=============================================================================#
+# =========================================================================== #
 
 
 ################ TEST FUNCTION
@@ -187,8 +188,8 @@ def test():
     print(eci_porto_ds)
 
 
-#=============================================================================#
-#=============================================================================#
-#=============================================================================#
+# =========================================================================== #
+# =========================================================================== #
+# =========================================================================== #
 if __name__ == '__main__':
     test()

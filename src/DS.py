@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 Classe DepartmentStore.
@@ -30,7 +30,8 @@ class DSObject(object):
     def __init__(self, nome, annos):
         self._nome = nome
         # check su formato anno+stagione
-        assert((len(str(annos).strip()) == 5) and (int(annos))), "Parametro 'annos' invalido"
+        assert((len(str(annos).strip()) == 5) and (int(annos))), \
+               "Parametro 'annos' invalido"
         self._annos = annos
         self._anno = str(annos[:-1])
         self._stagione = str(annos[-1])
@@ -54,7 +55,8 @@ class DSObject(object):
     def pubblica_file(self, lfiles, destinatario, mittente, flag):
         """
         Metodo generale di pubblicazione
-        richiama un oggetto PubblicaPRICAT e definisce il tipo di pubblicazione da effettuare tramite flag
+        richiama un oggetto PubblicaPRICAT e definisce il tipo di pubblicazione
+        da effettuare tramite flag
         """
         pass
 

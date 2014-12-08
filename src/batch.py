@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 Batch di gestione della stesura e dell'esportazione dei cataloghi via FTP a
@@ -57,6 +57,7 @@ ANNO = str(args.anno).lower()
 STAGIONE = str(args.stagione).lower()
 # ============================================================================ #
 
+
 # ============================================================================ #
 def main():
     """
@@ -71,7 +72,6 @@ def main():
     logger.info("=" * 80)
     logger.info("Starting execution at: " +
                 str(datetime.datetime.now().isoformat(lib_parametri.DATE_FMT)))
-
 
     # Gestione macro casi di azione:
     if DS:
@@ -93,7 +93,7 @@ def main():
         elif ACTION == 'sconti_eci':
             pass
         else:
-            pass#raise # se i parametri non vanno bene solleviamo un'eccezione
+            pass  #raise # se i parametri non vanno bene solleviamo un'eccezione
 
 
 if __name__ == '__main__':

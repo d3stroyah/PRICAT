@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 Libreria di utility utilizzate nel programma.
@@ -42,9 +42,11 @@ def getLogger(name='main'):
         fmt = log_param.fmt
         fmt_date = log_param.fmt_date
         formatter = logging.Formatter(fmt, fmt_date)
+
         # stream handler visualizzazione console
         handler = logging.StreamHandler()
         handler.setFormatter(formatter)
+
         # file handler: file di log
         file_handler = logging.FileHandler(log_param.LOGFILE_PATH +
                                            log_param.LOGFILE_NAME,
@@ -52,7 +54,7 @@ def getLogger(name='main'):
         file_handler.setFormatter(formatter)
 
         logger.addHandler(handler)
-        logger.addHandler(file_handler)
+        # logger.addHandler(file_handler)  # per ora uso solo lo stream
 
     if logger.name == 'main':
         logger.warning('Running: %s %s',

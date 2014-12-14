@@ -22,12 +22,22 @@ DAY_FMT = '%Y-%m-%d'
 LOG_FMT = '%(asctime)s - %(filename)-8s - %(funcName)-10s - %(levelname)-10s: %(message)s'
 LOGFILE_FMT = ".log"
 LOGFILE_MODE = {
-                "write": "w",
-                "append": "a"
-                }
+    "write": "w",
+    "append": "a"
+}
+
 
 # per ottenere il tempo intercorso dall'inizio dell'esecuzione
 def get_elapsed_time(final_time):
+    """
+    Funzione per calcolo del tempo trascorso dall'inizio dell'esecuzione del
+    programma
+
+    :param final_time: tempo su cui effettuare il calcolo
+    :type final_time: time.time
+    :return: tempo trascorso dall'inizio dell'esecuzione
+    :rtype: str
+    """
     return str(final_time - START_TIME)
 
 
@@ -42,14 +52,14 @@ class BaseParameter(object):
 class ParametriWS(BaseParameter):
 
     def __init__(self):
-        # super(ParametriWS, self).__init__(self)
+        super(ParametriWS, self).__init__()
         self.ws_dict = {}
 
 
 class ParametriDS(BaseParameter):
 
     def __init__(self):
-        # super(ParametriDS, self).__init__(self)
+        super(ParametriDS, self).__init__()
 
         self.lista_completa_DS = ()
         self.lista_ECI = ()
@@ -61,9 +71,9 @@ class ParametriDS(BaseParameter):
 class ParametriLogger(BaseParameter):
 
     def __init__(self):
-        # super(ParametriLogger, self).__init__(self)
+        super(ParametriLogger, self).__init__()
 
-        self.LOGFILE_PATH = 'log/'
+        self.LOGFILE_PATH = '../log/'
         self.LOGFILE_NAME = str((datetime.today().date().strftime(DAY_FMT))) + \
                             LOGFILE_FMT
         self.STREAM_PATH = ''

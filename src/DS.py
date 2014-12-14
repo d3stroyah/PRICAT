@@ -20,26 +20,40 @@ class DSObject(object):
     def __init__(self, nome, annos):
         self._nome = nome
         # check su formato anno+stagione
-        assert((len(str(annos).strip()) == 5) and (int(annos))), \
-               "Parametro 'annos' invalido"
+        assert ((len(str(annos).strip()) == 5) and (int(annos))), \
+            "Parametro 'annos' invalido"
         self._annos = annos
         self._anno = str(annos[:-1])
         self._stagione = str(annos[-1])
         self._lclienti = []
         self._lsocieta = []
         self._lfiles = []
+        self._field_list = (
+            "_nome", "_anno", "_stagione", "_lclienti", "_lsocieta")
 
     ############# FUNZIONI BASE
     def format_CABPRI(self, content):
-        """Formattazione generale di CABPRI"""
+        """
+        Formattazione generale di CABPRI
+        :param content:  contenuto del file da formattare
+        :type content: str
+        """
         pass
 
     def format_GRUPRI(self, content):
-        """Formattazione generale di GRUPRI"""
+        """
+        Formattazione generale di GRUPRI
+        :param content: contenuto del file da formattare
+        :type content: str
+        """
         pass
 
     def format_LINPRI(self, content):
-        """Formattazione generale di LINPRI"""
+        """
+        Formattazione generale di LINPRI
+        :param content: contenuto del file da formattare
+        :type content: str
+        """
         pass
 
     ############# GETITEM e RAPPRESENTAZIONI
@@ -47,15 +61,10 @@ class DSObject(object):
         return getattr(self, key)
 
     def __str__(self):
-        l_str = []
-        l_str.append('DS: ')
-        l_str.append('(tipo_DS => %(whatami)s)' % self)
-        l_str.append('(nome => %(_nome)s)' % self)
-        l_str.append('(anno => %(_anno)s)' % self)
-        l_str.append('(stagione => %(_stagione)s)' % self)
-        l_str.append('(lclienti => %(_lclienti)s)' % self)
-        l_str.append('(lsocieta => %(_lsocieta)s)' % self)
-        return '\n\t'.join(l_str)
+        i_str = "Tipo Department Store: " + self.get_whatami() + "\n\t"
+        l_str = [str(key) + ": " + str(value) for key, value in
+                 sorted(self.__dict__.items()) if key in self._field_list]
+        return i_str + '\n\t'.join(l_str)
 
     def __repr__(self):
         return "%s" % self.__class__
@@ -165,6 +174,10 @@ class OEDepartmentStore(DSObject):
 
 ################ TEST FUNCTION
 def test():
+    """
+    Test per le funzionalita di DS
+    :rtype : None
+    """
     eci_ds = ECIDepartmentStore("eci", "20142")
     eci_porto_ds = ECIPortoDepartmentStore("eci_porto", "20142")
 

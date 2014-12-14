@@ -4,4 +4,3 @@
 """
 Libreria delle funzioni di manipolazione dati.
 """
-

@@ -4,4 +4,3 @@
 """
 Libreria di interfaccia con i webservice mmfg.
 """
-

@@ -17,8 +17,13 @@ import lib_ws
 
 
 # CREAZIONE DEL LOGGER
-def getLogger(name='main'):
-    """Genera un logger globale per il batch"""
+def get_logger(name='main'):
+    """Genera un logger globale per il batch
+    :param name: nome del logger
+    :type name: str
+    :returns: logger with double handler (stream + file)
+    :rtype: logging.Logger
+    """
     logger = logging.getLogger(name)
 
     log_param = lib_parametri.ParametriLogger()
@@ -51,3 +56,31 @@ def getLogger(name='main'):
                        os.path.basename(sys.argv[0]),
                        ' '.join(sys.argv[1:]))
     return logger
+
+import time
+
+
+def timeit(method):
+    """Wrapper per misurare il tempo di esecuzione di una funzione/metodo
+     :param method: function
+     :returns decorated function
+    """
+    def timed(*args, **kw):
+        """
+        Funzione interna di cui misurare il tempo di esecuzione
+        :param args: list
+        :param kw: dict
+        :return: result
+        """
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+
+        logger = get_logger()
+        logger.info(
+            ' %r executed, args: (%r, %r). Execution time: %2.2f sec' %
+            (method.__name__, args, kw, te - ts))
+        #print '%r (%r, %r) %2.2f sec' % (method.__name__, args, kw, te-ts)
+        return result
+
+    return timed

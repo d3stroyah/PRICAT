@@ -28,7 +28,7 @@ import lib_data
 import lib_parametri
 import lib_utility
 import lib_ws
-
+from lib_utility import timeit
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-DS", "-DepartmentStore", 
@@ -48,7 +48,9 @@ ANNO = str(args.anno).lower()
 STAGIONE = str(args.stagione).lower()
 # ============================================================================ #
 
+
 # ============================================================================ #
+@timeit
 def main():
     """
     Programma di generazione ed esportazione cataloghi,
@@ -58,9 +60,10 @@ def main():
     il batch solleva un'eccezione e termina l'esecuzione.
     """
     start_time = datetime.datetime.now()
-    logger = lib_utility.getLogger()
+    logger = lib_utility.get_logger()
     logger.info("=" * 80)
-    logger.info("Starting execution at: " + start_time.strftime(lib_parametri.DATE_FMT))
+    logger.info(
+        "Starting execution at: " + start_time.strftime(lib_parametri.DATE_FMT))
 
     # Gestione macro casi di azione:
     if DS:
@@ -82,10 +85,11 @@ def main():
         elif ACTION == 'sconti_eci':
             pass
         else:
-            pass  #raise # se i parametri non vanno bene solleviamo un'eccezione
+            pass  # raise # se i parametri non vanno bene: raise
 
     final_time = datetime.datetime.now()
-    logger.info("Execution ended at: " + final_time.strftime(lib_parametri.DATE_FMT))
+    logger.info(
+        "Execution ended at: " + final_time.strftime(lib_parametri.DATE_FMT))
     logger.info("Elapsed time: " + str(final_time - start_time))
     logger.info("=" * 80 + "\n")
 

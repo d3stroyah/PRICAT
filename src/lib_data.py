@@ -1,1 +1,7 @@
-## utilities di manipolazione dati e logica "nascosta"
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Libreria delle funzioni di manipolazione dati.
+"""
+
